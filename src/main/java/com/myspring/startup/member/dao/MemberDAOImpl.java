@@ -8,7 +8,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.myspring.startup.member.vo.MemberVO;
-
+//11
 @Repository("memberDAO")
 public class MemberDAOImpl implements MemberDAO{
 	@Autowired

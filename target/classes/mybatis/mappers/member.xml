@@ -49,4 +49,5 @@
 		insert into manufacturerApproval(approvalNum, approvalStatus, rejectionReason, cuId, applyDate) 
 		values( #{approvalNum}, 3, '', #{cuId}, sysDate)
 	</insert>
+<!-- 	11 -->
 </mapper>

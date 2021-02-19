@@ -24,7 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myspring.startup.member.service.MemberService;
 import com.myspring.startup.member.vo.MemberVO;
-
+//11
 @Controller("memberController")
 @RequestMapping(value="/member/*")
 @EnableAspectJAutoProxy

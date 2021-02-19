@@ -1,7 +1,7 @@
 package com.myspring.startup.member.vo;
 
 import org.springframework.stereotype.Component;
-
+//11
 @Component("memberVO")
 public class MemberVO {
 	private String cuId;

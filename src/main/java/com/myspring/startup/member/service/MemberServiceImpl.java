@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.myspring.startup.member.dao.MemberDAO;
 import com.myspring.startup.member.vo.MemberVO;
-
+//11
 @Service("memberService")
 @Transactional(propagation=Propagation.REQUIRED)
 public class MemberServiceImpl implements MemberService{

@@ -46,7 +46,7 @@ function validate(){
 	 return false;
 	}
 }    
-
+//11
 //카카오지도 API
 var element_layer = document.getElementById('layer');
 

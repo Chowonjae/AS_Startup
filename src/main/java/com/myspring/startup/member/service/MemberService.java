@@ -3,7 +3,7 @@ package com.myspring.startup.member.service;
 import java.util.Map;
 
 import com.myspring.startup.member.vo.MemberVO;
-
+//11
 public interface MemberService {
 	public MemberVO login(MemberVO memberVO) throws Exception;
 	public int addMember(Map<String, Object> memberJoinMap) throws Exception;

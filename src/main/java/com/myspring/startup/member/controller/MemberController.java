@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myspring.startup.member.vo.MemberVO;
-
+//11
 public interface MemberController {
 	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ResponseEntity addMember(HttpServletRequest request, HttpServletResponse response) throws Exception;
