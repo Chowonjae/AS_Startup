@@ -82,15 +82,23 @@ public class MemberControllerImpl implements MemberController{
 	@Override
 	@RequestMapping(value="/addMember.do", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
-	public ResponseEntity addMember(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception {
+	public ResponseEntity addMember(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 		Map<String, Object> memberJoinMap = new HashMap<String, Object>();
-		Enumeration enu = multipartRequest.getParameterNames();
+		Enumeration enu = request.getParameterNames();
 		while(enu.hasMoreElements()) {
 			String name=(String)enu.nextElement();
-			String value=multipartRequest.getParameter(name);
+			String value=request.getParameter(name);		
 			memberJoinMap.put(name, value);
 		}
-		
+		int uno = 0;
+		for(String mapkey : memberJoinMap.keySet()) {
+			System.out.println(memberJoinMap.get(mapkey));
+			if(mapkey.equals("uno")) {
+				uno = Integer.parseInt((String.valueOf(memberJoinMap.get(mapkey))));
+			}
+		}
+		memberJoinMap.put("uNo", uno);
 		String addr1 = null;
 		String addr2 = null;
 		for(String mapkey : memberJoinMap.keySet()) {
@@ -108,16 +116,21 @@ public class MemberControllerImpl implements MemberController{
 		HttpHeaders resHeaders = new HttpHeaders();
 		resHeaders.add("Content-Type", "text/html; charset=utf-8");
 		try {
-			memberService.addMember(memberJoinMap);
+			if(uno == 3) {
+				System.out.println("되냐?");
+				memberService.addManufac(memberJoinMap);
+			}else if(uno == 1) {
+				memberService.addMember(memberJoinMap);
+			}
 			message = "<script>";
 			message += "alert('회원가입이 완료 되었습니다.');";
-			message += " location.href='"+multipartRequest.getContextPath()+"/main/main.do';";
+			message += " location.href='"+request.getContextPath()+"/main/main.do';";
 			message += " </script>";
 			resEntity = new ResponseEntity<String>(message, resHeaders, HttpStatus.CREATED);
 		}catch(Exception e) {
 			message = "<script>";
 			message += "alert('회원가입이 실패헀습니다. 다시 시도해 주세요.');";
-			message += " location.href='"+multipartRequest.getContextPath()+"/member/join.do';";
+			message += " location.href='"+request.getContextPath()+"/member/join.do';";
 			message += " </script>";
 			resEntity = new ResponseEntity<String>(message, resHeaders, HttpStatus.CREATED);
 			e.printStackTrace();
@@ -150,4 +163,5 @@ public class MemberControllerImpl implements MemberController{
 		mav.setViewName("/member/id");
 		return mav;
 	}
+
 }

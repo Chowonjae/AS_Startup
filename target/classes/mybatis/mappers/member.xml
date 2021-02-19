@@ -8,6 +8,16 @@
 		<result property="cuId" column="cuId" />
 		<result property="pw" column="pw" />
 		<result property="uNo" column="uNo" />
+		
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="addr" column="addr" />
+		
+		<result property="officer" column="officer" />
+		<result property="tel" column="tel" />
+		<result property="manufacNo" column="manufacNo" />
+		<result property="approvalNum" column="approvalNum" />
+		
 	</resultMap>
 	
 	<select id="loginById" resultType="MemberVO" parameterType="MemberVO">
@@ -19,9 +29,24 @@
 	
 	<insert id="insertNewMember" parameterType="java.util.Map">
 		<![CDATA[
- 			insert into MEMBER()
- 			values()
+			insert into Member(cuId, pw, uno)
+			values(#{cuId}, #{pw}, #{uNo,jdbcType=INTEGER})
 		]]>
-</insert>
+	</insert>
 	
+	<select id="RecentManufacNo" resultType="int">
+		select max(m.manufacturerNo) from manufacturer m
+	</select>
+	<select id="RecentManufacApply" resultType="int">
+		select max(mA.approvalNum) from manufacturerApproval mA
+	</select>
+	
+	<insert id="insertManufacturer">
+		insert into manufacturer(cuId, manufacturerNo, name, addr, officer, tel) 
+		values( #{cuId}, #{manufacNo}, #{manufacName}, #{addr}, #{officer}, #{tel})
+	</insert>
+	<insert id="insertManufacApply">
+		insert into manufacturerApproval(approvalNum, approvalStatus, rejectionReason, cuId, applyDate) 
+		values( #{approvalNum}, 3, '', #{cuId}, sysDate)
+	</insert>
 </mapper>

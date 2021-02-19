@@ -2,7 +2,7 @@
 
 function validate(){
 	var mem = document.getElementById("memberInfoYn");
-
+	
 	if($("input[id=memberInfoYn]:radio:checked").length == 0){
 		alert("개인정보 동의를 체크해 주세요.");
 		return false;
@@ -32,6 +32,18 @@ function validate(){
 	if(mee.value==""){
 		alert("날짜를 선택하세요.");
 		return false;
+	}
+	
+	
+	var manufacName = document.getElementId("manufacName");
+	var officer = document.getElementId("officer");
+	if(manufacName.value == ""){
+	 alert("제조사이름을 입력하세요.");
+	 return false;
+	}
+	if(officer.value == ""){
+	 alert("담당자명을 입력하세요.");
+	 return false;
 	}
 }    
 

@@ -16,20 +16,12 @@
     <!-- css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
-    <style>
-        img {
-            display: block;
-            margin: 0px auto;
-            width: 400px;
-            height: 300px;
-        }
-    </style>
     <!-- JavaScript -->
     <!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
     <script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="js/join.js"></script>
+    <script type="text/javascript" src="../resources/js/join.js"></script>
 </head>
 
 <body>
@@ -39,13 +31,12 @@
     <main>
         <div class="container">
            <div class="form">
-            <div class="logo">
-                <img src="img/logo1.png" />
-            </div>
-            <form class="form-horizontal" role="form" method="post" action="javascript:alert( 'success!' );">
+            <form class="form-horizontal" role="form" method="post" onsubmit="return validate();" action="${contextPath}/member/addMember.do">
                 <div class="form-group">
                     <h4><label for="provision" class="col-lg-2 control-label">회원가입약관</label></h4>
+                    <input type="hidden" name="uno" id="uno" value="3"/>
                     <div class="col-lg-10" id="provision">
+                    
                         <textarea class="form-control" rows="8" style="resize:none">제 1조 (목적)
     본 약관은 스타트업 AS(이하 "수리점"이라 합니다)에서 운영하는 인터넷 홈페이지ㄹ에서 제공하는 인터넷 관련 서비스(이하 "서비스"라 합니다)의 이용에 관한 사항을 규정함을 목적으로 합니다.
 
@@ -280,6 +271,7 @@
                                 	개인정보 취급 방침에 동의합니다.
                             </label>
                         </div>
+                        </div></div>
                         <br />
                         <div class="form-group">
                         <div class="form-group" id="divId">
@@ -307,12 +299,22 @@
                         </div>
 
                         <div class="form-group" id="divNickname">
-                            <label for="inputNickname" class="col-lg-2 control-label">주소*</label>
-                            <div class="col-lg-10">
-                                <input type="text" class="form-control" id="sample5_address" data-rule-required="true" placeholder="--" maxlength="15">
-                                <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
-                            </div>
-                        </div>
+								<label for="addr" class="col-lg-2 control-label">주소</label>
+								<div class="col-lg-12">
+									<input type="text" class="col-lg-4" id="postCode"
+										style="padding: 5px; border-radius: 5px;" name="postCode"
+										data-rule-required="true" placeholder="우편주소" maxlength="30"
+										disabled> <input type="button"
+										class="col-lg-2 btn btn-primary"
+										onclick="sample5_execDaumPostcode()" value="주소 검색"> 
+										<input type="text" class="form-control" id="addr1" name="addr1"
+										data-rule-required="true" placeholder="주소" maxlength="30"
+										readonly> 
+										<input type="text" class="form-control"
+										id="addr2" name="addr2" data-rule-required="true"
+										placeholder="상세 주소" maxlength="30"> <br>
+								</div>
+							</div>
                         
                         <div class="form-group" id="divName">
                             <label for="inputName" class="col-lg-2 control-label">담당자*</label>
@@ -320,10 +322,11 @@
                                 <input type="text" class="form-control onlyHangul" id="officer" name="officer" data-rule-required="true" placeholder="담당자 이름을 입력해주세요." maxlength="15">
                             </div>
                         </div>
+                        
                         <div class="form-group" id="divName">
                             <label for="inputName" class="col-lg-2 control-label">전화번호*</label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control onlyHangul" id="tel" name="tel" data-rule-required="true" placeholder="'-'빼고 입력해주세요." maxlength="15">
+                                <input type="text" class="form-control onlyHangul" id="phone" name="tel" data-rule-required="true" placeholder="'-'빼고 입력해주세요." maxlength="11">
                             </div>
                         </div>
                     </div>
@@ -331,7 +334,7 @@
                 <br>
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
-                        <button type="submit" class="btn btn-primary form-control">회원가입</button>
+                        <button type="submit" class="btn btn-primary form-control" >회원가입</button>
                     </div>
                 </div>
             </form>

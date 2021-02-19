@@ -76,12 +76,10 @@
         <table class="table" id="list_view">
             <thead>
                 <tr>
-
                     <th scope="col" style="border-right: 1px solid #eee; width: 45%">제품</th>
                     <th scope="col" style="border-right: 1px solid #eee; width: 20%">분류</th>
                     <th scope="col" style="border-right: 1px solid #eee; width: 20%">제조사</th>
                     <th scope="col" style="border-right: 1px solid #eee; width: 10%">승인</th>
-
                 </tr>
             </thead>
             <tbody>

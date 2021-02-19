@@ -25,4 +25,15 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.insertNewMember(memberJoinMap);
 		
 	}
+	
+	public void addManufac(Map<String, Object> memberJoinMap) throws Exception{
+		memberDAO.insertNewMember(memberJoinMap);
+		int RecentManufacNo = memberDAO.RecentManufacNo();
+		int RecentManufacApply = memberDAO.RecentManufacApply();
+		
+		memberJoinMap.put("manufacNo", RecentManufacNo+1);
+		memberJoinMap.put("approvalNum", RecentManufacApply+1);
+		
+		memberDAO.applyManufac(memberJoinMap);
+	}
 }

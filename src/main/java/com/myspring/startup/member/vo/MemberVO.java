@@ -7,15 +7,29 @@ public class MemberVO {
 	private String cuId;
 	private String pw;
 	private int uNo;
-	
-	private String addr;
-	private String officer;
 	private String name;
-	private String tel;
 	private String email;
+	private String addr;
+	
+	private String officer;
+	private String tel;
+	private int manufacNo;
+	private int approvalNum;
 	
 	
 	
+	public int getManufacNo() {
+		return manufacNo;
+	}
+	public void setManufacNo(int manufacNo) {
+		this.manufacNo = manufacNo;
+	}
+	public int getApprovalNum() {
+		return approvalNum;
+	}
+	public void setApprovalNum(int approvalNum) {
+		this.approvalNum = approvalNum;
+	}
 	public String getAddr() {
 		return addr;
 	}
